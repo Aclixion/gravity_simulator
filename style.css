@@ -12,6 +12,11 @@ input {
     display: block;
 }
 
+canvas {
+    border: 1px solid black;
+}
+
 .option {
     margin: 15px 0;
 }
+
