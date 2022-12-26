@@ -11,3 +11,7 @@ body {
 input {
     display: block;
 }
+
+.option {
+    margin: 15px 0;
+}
