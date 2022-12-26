@@ -20,6 +20,10 @@ canvas {
     display: flex;
 }
 
+.options-section {
+    padding: 10px;
+}
+
 .option {
     margin: 15px 0;
 }
