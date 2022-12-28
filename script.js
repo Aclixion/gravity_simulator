@@ -5,6 +5,7 @@ const massInput = document.querySelector(".mass-input"); // Input for mass
 const radiusInput = document.querySelector(".radius-input"); // Input for radius
 const colorInput = document.querySelector(".color-input"); // Input for color
 
+// Creates a planet object
 function Planet(mass, radius, color) {
     this.mass = mass;
     this.radius = radius;
