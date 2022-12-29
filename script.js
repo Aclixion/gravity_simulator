@@ -15,16 +15,13 @@ function Planet(mass, radius, color) {
     this.position = {
         x: 0,
         y: 0,
-        z: 0
     };
     this.velocity = {
         x: 0,
         y: 0,
-        z: 0
     }
     this.acceleration = {
         x: 0,
         y: 0,
-        z: 0
     }
 };
