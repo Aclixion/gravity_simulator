@@ -35,3 +35,13 @@ function addPlanet(e) {
 
     planetList.push(newPlanet);
 }
+
+// Draws a frame in the animation
+function drawFrame() {
+    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    for (let i = 0; i < planetList.length; i++) {
+        ctx.beginPath();
+        ctx.arc(planetList[i].position.x, planetList[i].position.y, planetList[i].radius, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
+}
