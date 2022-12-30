@@ -62,8 +62,8 @@ function updateVectors(delta) {
                 let distance = Math.sqrt(distX*distX + distY*distY);
 
                 // Update planet acceleration
-                planetList[i].acceleration.x = ((G * planetList[j].mass) / distance*distance) * (distX / distance);
-                planetList[i].acceleration.y = ((G * planetList[j].mass) / distance*distance) * (distY / distance);
+                planetList[i].acceleration.x += ((G * planetList[j].mass) / distance*distance) * (distX / distance);
+                planetList[i].acceleration.y += ((G * planetList[j].mass) / distance*distance) * (distY / distance);
             }
         }
     }
@@ -78,3 +78,15 @@ function drawFrame() {
         ctx.stroke();
     }
 }
+
+// Run animation
+let previousTimestamp = 0;
+function step(timestamp) {
+    let delta = timestamp - previousTimestamp;
+    drawFrame();
+    updateVectors(delta);
+    previousTimestamp = timestamp;
+    window.requestAnimationFrame(step);
+}
+
+window.requestAnimationFrame(step);
