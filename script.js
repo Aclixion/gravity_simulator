@@ -5,6 +5,8 @@ const massInput = document.querySelector(".mass-input"); // Input for mass
 const radiusInput = document.querySelector(".radius-input"); // Input for radius
 const colorInput = document.querySelector(".color-input"); // Input for color
 
+const G = 6.67e-11; // Gravitational constant (units are m^3/kgs^2)
+
 let planetList = []; // Array of all planets on canvas
 
 // Creates a planet object
