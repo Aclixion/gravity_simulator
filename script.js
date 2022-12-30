@@ -36,6 +36,39 @@ function addPlanet(e) {
     planetList.push(newPlanet);
 }
 
+// Updates the position, velocity, and acceleration of each planet
+function updateVectors(delta) {
+    // Gets old positions of all planets. This is needed to calculate accelerations
+    let oldPositions = [];
+    for (let i = 0; i < planetList.length; i++) {
+        oldPositions.push(planetList[i].position);
+    }
+
+    // Converts delta from milliseconds to seconds
+    let deltaInSeconds = delta / 1000;
+    for (let i = 0; i < planetList.length; i++) {
+        // Update planet position
+        planetList[i].position.x += planetList[i].velocity.x * deltaInSeconds;
+        planetList[i].position.y += planetList[i].velocity.y * deltaInSeconds;
+        // Update planet velocity
+        planetList[i].velocity.x += planetList[i].acceleration.x * deltaInSeconds;
+        planetList[i].velocity.y += planetList[i].acceleration.y * deltaInSeconds;
+
+        for (let j = 0; j < planetList.length; j++) {
+            if (j !== i) {
+                // Calculate displacement vectors for each planet relative to planet at index i
+                let distX = oldPositions[j].x - planetList[i].position.x;
+                let distY = oldPositions[j].y - planetList[i].position.y;
+                let distance = Math.sqrt(distX*distX + distY*distY);
+
+                // Update planet acceleration
+                planetList[i].acceleration.x = ((G * planetList[j].mass * 10000000000) / distance*distance) * (distX / distance);
+                planetList[i].acceleration.y = ((G * planetList[j].mass * 10000000000) / distance*distance) * (distY / distance);
+            }
+        }
+    }
+}
+
 // Draws a frame in the animation
 function drawFrame() {
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
