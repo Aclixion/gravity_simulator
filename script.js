@@ -90,3 +90,5 @@ function step(timestamp) {
 }
 
 window.requestAnimationFrame(step);
+
+canvas.addEventListener("click", addPlanet);
