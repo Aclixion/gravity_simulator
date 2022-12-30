@@ -28,3 +28,10 @@ function Planet(mass, radius, color, positionX=0, positionY=0, velocityX=0, velo
     }
 };
 
+// Adds a planet to planet list
+function addPlanet(e) {
+    let newPlanet = new Planet(Number(massInput.value), Number(radiusInput.value), colorInput.value, 
+    positionX=e.offsetX, positionY=e.offsetY);
+
+    planetList.push(newPlanet);
+}
