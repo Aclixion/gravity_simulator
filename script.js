@@ -10,7 +10,7 @@ const G = 6.67e-11; // Gravitational constant (units are m^3/kgs^2)
 let planetList = []; // Array of all planets on canvas
 
 // Creates a planet object
-function Planet(mass, radius, color) {
+function Planet(mass, radius, color, positionX=0, positionY=0, velocityX=0, velocityY=0, accelerationX=0, accelerationY=0) {
     this.mass = mass;
     this.radius = radius;
     this.color = color;
@@ -27,3 +27,4 @@ function Planet(mass, radius, color) {
         y: 0,
     }
 };
+
