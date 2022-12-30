@@ -62,8 +62,8 @@ function updateVectors(delta) {
                 let distance = Math.sqrt(distX*distX + distY*distY);
 
                 // Update planet acceleration
-                planetList[i].acceleration.x = ((G * planetList[j].mass * 10000000000) / distance*distance) * (distX / distance);
-                planetList[i].acceleration.y = ((G * planetList[j].mass * 10000000000) / distance*distance) * (distY / distance);
+                planetList[i].acceleration.x = ((G * planetList[j].mass) / distance*distance) * (distX / distance);
+                planetList[i].acceleration.y = ((G * planetList[j].mass) / distance*distance) * (distY / distance);
             }
         }
     }
