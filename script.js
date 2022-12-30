@@ -54,6 +54,9 @@ function updateVectors(delta) {
         planetList[i].velocity.x += planetList[i].acceleration.x * deltaInSeconds;
         planetList[i].velocity.y += planetList[i].acceleration.y * deltaInSeconds;
 
+        // Calculate net force on planet 
+        let netForceX = 0;
+        let netForceY = 0;
         for (let j = 0; j < planetList.length; j++) {
             if (j !== i) {
                 // Calculate displacement vectors for each planet relative to planet at index i
@@ -61,11 +64,14 @@ function updateVectors(delta) {
                 let distY = oldPositions[j].y - planetList[i].position.y;
                 let distance = Math.sqrt(distX*distX + distY*distY);
 
-                // Update planet acceleration
-                planetList[i].acceleration.x += ((G * planetList[j].mass) / distance*distance) * (distX / distance);
-                planetList[i].acceleration.y += ((G * planetList[j].mass) / distance*distance) * (distY / distance);
+                netForceX += ((G * planetList[j].mass * planetList[i].mass) / (distance*distance)) * (distX / distance);
+                netForceY += ((G * planetList[j].mass * planetList[i].mass) / (distance*distance)) * (distY / distance);
             }
         }
+
+        // Update planet acceleration
+        planetList[i].acceleration.x = netForceX / planetList[i].mass;
+        planetList[i].acceleration.y = netForceY / planetList[i].mass;
     }
 }
 
