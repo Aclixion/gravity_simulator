@@ -7,6 +7,17 @@ const colorInput = document.querySelector(".color-input"); // Input for color
 
 const G = 6.67e-11; // Gravitational constant (units are m^3/kgs^2)
 
+// Clicked location
+let clickedX;
+let clickedY;
+
+// Mouse location
+let mouseX;
+let mouseY;
+
+// Whether or not the mouse is down
+let mouseIsDown;
+
 let planetList = []; // Array of all planets on canvas
 
 // Creates a planet object
@@ -62,6 +73,7 @@ function updateVectors(delta) {
                 // Calculate displacement vectors for each planet relative to planet at index i
                 let distX = oldPositions[j].x - planetList[i].position.x;
                 let distY = oldPositions[j].y - planetList[i].position.y;
+
                 let distance = Math.sqrt(distX*distX + distY*distY);
 
                 netForceX += ((G * planetList[j].mass * planetList[i].mass) / (distance*distance)) * (distX / distance);
@@ -83,6 +95,23 @@ function drawFrame() {
         ctx.arc(planetList[i].position.x, planetList[i].position.y, planetList[i].radius, 0, 2 * Math.PI);
         ctx.stroke();
     }
+
+    // Draw planet template when mouse is down
+    if (mouseIsDown) {
+        // Draws the planet that will be released when the mouse is released
+        ctx.beginPath();
+        ctx.arc(clickedX, clickedY, Number(radiusInput.value), 0, 2 * Math.PI);
+        ctx.stroke();
+        
+        // Draws the velocity vector.
+        //The length of the arrow will indicate how fast the planet will be released.
+        // The direction of the arrow will indicate in which direction the planet will be released.
+        ctx.beginPath();
+        ctx.moveTo(clickedtX, clickedY);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.moveTo(clickedX, clickedY);
+        ctx.stroke();
+    }
 }
 
 // Run animation
@@ -97,4 +126,27 @@ function step(timestamp) {
 
 window.requestAnimationFrame(step);
 
-canvas.addEventListener("click", addPlanet);
+// Change clicked position when mouse is down
+canvas.addEventListener("mousedown", (e) => {
+    mouseIsDown = true;
+    clickedX = e.offsetX;
+    clickedY = e.offsetY;
+});
+
+// Adds planet when mouse is released
+canvas.addEventListener("mouseup", () => {
+    mouseIsDown = false;
+    let velocityX = mouseX - clickedX;
+    let velocityY = mouseY - clickedY;
+    let newPlanet = new Planet(Number(massInput.value), Number(radiusInput.value), colorInput.value,
+    positionX = clickedX, positionY = clickedY, velocityX = velocityX, velocityY = velocityY);
+    planetList.push(newPlanet);
+});
+
+// Change mouse position variable when mouse is down and is moved
+canvas.addEventListener("mousemove", (e) => {
+    if (mouseIsDown) {
+        mouseX = e.offsetX;
+        mouseY = e.offsetY;
+    }
+});
