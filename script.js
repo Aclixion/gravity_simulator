@@ -127,29 +127,9 @@ function drawPlanetTemplate() {
 
 // Draws a frame in the animation
 function drawFrame() {
-    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-    for (let i = 0; i < planetList.length; i++) {
-        ctx.beginPath();
-        ctx.arc(planetList[i].position.x, planetList[i].position.y, planetList[i].radius, 0, 2 * Math.PI);
-        ctx.stroke();
-    }
-
-    // Draw planet template when mouse is down
-    if (mouseIsDown) {
-        // Draws the planet that will be released when the mouse is released
-        ctx.beginPath();
-        ctx.arc(clickedX, clickedY, Number(radiusInput.value), 0, 2 * Math.PI);
-        ctx.stroke();
-        
-        // Draws the velocity vector.
-        //The length of the arrow will indicate how fast the planet will be released.
-        // The direction of the arrow will indicate in which direction the planet will be released.
-        ctx.beginPath();
-        ctx.moveTo(clickedX, clickedY);
-        ctx.lineTo(mouseX, mouseY);
-        ctx.moveTo(clickedX, clickedY);
-        ctx.stroke();
-    }
+    clearCanvas();
+    drawPlanets();
+    drawPlanetTemplate();
 }
 
 // Run animation
