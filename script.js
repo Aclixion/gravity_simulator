@@ -92,6 +92,11 @@ function updateVectors(delta) {
     }
 }
 
+// Removes everything from the canvas
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+}
+
 // Draws a frame in the animation
 function drawFrame() {
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
