@@ -106,8 +106,8 @@ function drawPlanets() {
     }
 }
 
+// Draw planet template when mouse is down
 function drawPlanetTemplate() {
-    // Draw planet template when mouse is down
     if (mouseIsDown) {
         // Draws the planet that will be released when the mouse is released
         ctx.beginPath();
