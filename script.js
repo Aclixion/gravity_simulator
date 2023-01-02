@@ -107,7 +107,7 @@ function drawFrame() {
         //The length of the arrow will indicate how fast the planet will be released.
         // The direction of the arrow will indicate in which direction the planet will be released.
         ctx.beginPath();
-        ctx.moveTo(clickedtX, clickedY);
+        ctx.moveTo(clickedX, clickedY);
         ctx.lineTo(mouseX, mouseY);
         ctx.moveTo(clickedX, clickedY);
         ctx.stroke();
