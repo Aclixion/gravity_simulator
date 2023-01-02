@@ -74,10 +74,15 @@ function updateVectors(delta) {
                 let distX = oldPositions[j].x - planetList[i].position.x;
                 let distY = oldPositions[j].y - planetList[i].position.y;
 
+                // Distance between positions
                 let distance = Math.sqrt(distX*distX + distY*distY);
 
-                netForceX += ((G * planetList[j].mass * planetList[i].mass) / (distance*distance)) * (distX / distance);
-                netForceY += ((G * planetList[j].mass * planetList[i].mass) / (distance*distance)) * (distY / distance);
+                // Cosine and sine of displacement vector
+                let cosine = (distX / distance);
+                let sine = (distY / distance);
+
+                netForceX += ((G * planetList[j].mass * planetList[i].mass) / (distance*distance)) * cosine;
+                netForceY += ((G * planetList[j].mass * planetList[i].mass) / (distance*distance)) * sine;
             }
         }
 
