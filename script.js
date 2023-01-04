@@ -7,6 +7,10 @@ const colorInput = document.querySelector(".color-input"); // Input for color
 
 const G = 6.67e-11; // Gravitational constant (units are m^3/kgs^2)
 
+// Multipliers for distance and mass
+const DISTANCE_MULTIPLIER = 10e4;
+const MASS_MULTIPLIER = 10e24;
+
 // Clicked location
 let clickedX;
 let clickedY;
@@ -41,7 +45,7 @@ function Planet(mass, radius, color, positionX=0, positionY=0, velocityX=0, velo
 
 // Adds a planet to planet list
 function addPlanet(e) {
-    let newPlanet = new Planet(Number(massInput.value), Number(radiusInput.value), colorInput.value, 
+    let newPlanet = new Planet(Number(massInput.value) * MASS_MULTIPLIER, Number(radiusInput.value), colorInput.value, 
     positionX=e.offsetX, positionY=e.offsetY);
 
     planetList.push(newPlanet);
@@ -71,8 +75,8 @@ function updateVectors(delta) {
         for (let j = 0; j < planetList.length; j++) {
             if (j !== i) {
                 // Calculate displacement vectors for each planet relative to planet at index i
-                let distX = oldPositions[j].x - planetList[i].position.x;
-                let distY = oldPositions[j].y - planetList[i].position.y;
+                let distX = (oldPositions[j].x - planetList[i].position.x) * DISTANCE_MULTIPLIER;
+                let distY = (oldPositions[j].y - planetList[i].position.y) * DISTANCE_MULTIPLIER;
 
                 // Distance between positions
                 let distance = Math.sqrt(distX*distX + distY*distY);
@@ -156,7 +160,7 @@ canvas.addEventListener("mouseup", () => {
     mouseIsDown = false;
     let velocityX = mouseX - clickedX;
     let velocityY = mouseY - clickedY;
-    let newPlanet = new Planet(Number(massInput.value), Number(radiusInput.value), colorInput.value,
+    let newPlanet = new Planet(Number(massInput.value) * MASS_MULTIPLIER, Number(radiusInput.value), colorInput.value,
     positionX = clickedX, positionY = clickedY, velocityX = velocityX, velocityY = velocityY);
     planetList.push(newPlanet);
 });
