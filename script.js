@@ -9,7 +9,7 @@ const G = 6.67e-11; // Gravitational constant (units are m^3/kgs^2)
 
 // Multipliers for distance and mass
 const DISTANCE_MULTIPLIER = 10e4;
-const MASS_MULTIPLIER = 10e28;
+const MASS_MULTIPLIER = 10e24;
 
 // Clicked location
 let clickedX;
