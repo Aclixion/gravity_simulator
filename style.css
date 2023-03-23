@@ -31,3 +31,8 @@ canvas {
 .option {
     margin-bottom: 15px;
 }
+
+.stays-still {
+    display: flex;
+    gap: 5px;
+}
