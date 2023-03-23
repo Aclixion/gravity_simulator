@@ -26,8 +26,7 @@ let mouseIsDown;
 let planetList = []; // Array of all planets on canvas
 
 // Creates a planet object
-function Planet(mass, radius, color, positionX=0, positionY=0, velocityX=0, velocityY=0, accelerationX=0, accelerationY=0,
-    staysStill=false) {
+function Planet(mass, radius, color, positionX=0, positionY=0, velocityX=0, velocityY=0, accelerationX=0, accelerationY=0) {
     this.mass = mass;
     this.radius = radius;
     this.color = color;
