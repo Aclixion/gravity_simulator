@@ -64,7 +64,12 @@ function updateVectors(delta) {
     // Converts delta from milliseconds to seconds
     let deltaInSeconds = delta / 1000;
     for (let i = 0; i < planetList.length; i++) {
-        // Update planet position
+        if (planetList[i].staysStill) {
+            // If planet stays still, do not change parameters
+            planetList[i].velocity.x = 0;
+            planetList[i].velocity.y = 0;
+        } else {
+            // Update planet position
         planetList[i].position.x += planetList[i].velocity.x * deltaInSeconds;
         planetList[i].position.y += planetList[i].velocity.y * deltaInSeconds;
         // Update planet velocity
@@ -95,6 +100,7 @@ function updateVectors(delta) {
         // Update planet acceleration
         planetList[i].acceleration.x = netForceX / planetList[i].mass;
         planetList[i].acceleration.y = netForceY / planetList[i].mass;
+        }
     }
 }
 
