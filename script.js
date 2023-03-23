@@ -75,8 +75,8 @@ function updateVectors(delta) {
         for (let j = 0; j < planetList.length; j++) {
             if (j !== i) {
                 // Calculate displacement vectors for each planet relative to planet at index i
-                let distX = (oldPositions[j].x - planetList[i].position.x) * DISTANCE_MULTIPLIER;
-                let distY = (oldPositions[j].y - planetList[i].position.y) * DISTANCE_MULTIPLIER;
+                let distX = (oldPositions[j].x - planetList[i].position.x);
+                let distY = (oldPositions[j].y - planetList[i].position.y);
 
                 // Distance between positions
                 let distance = Math.sqrt(distX*distX + distY*distY);
