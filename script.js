@@ -79,7 +79,7 @@ function updateVectors(delta) {
                 let distY = (oldPositions[j].y - planetList[i].position.y);
 
                 // Distance between positions
-                let distance = Math.sqrt(distX*distX + distY*distY);
+                let distance = Math.sqrt(distX*distX + distY*distY) * DISTANCE_MULTIPLIER;
 
                 // Cosine and sine of displacement vector
                 let cosine = (distX / distance);
