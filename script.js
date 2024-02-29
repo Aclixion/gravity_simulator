@@ -154,7 +154,7 @@ function step(timestamp) {
     window.requestAnimationFrame(step);
 }
 
-// Change clicked position when mouse is down
+// Creates planets
 canvas.addEventListener("click", (e) => {
     if (!mouseIsDown) {
         mouseIsDown = true;
