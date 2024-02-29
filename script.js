@@ -156,23 +156,6 @@ function step(timestamp) {
 
 window.requestAnimationFrame(step);
 
-// Change clicked position when mouse is down
-canvas.addEventListener("mousedown", (e) => {
-    mouseIsDown = true;
-    clickedX = e.offsetX;
-    clickedY = e.offsetY;
-});
-
-// Adds planet when mouse is released
-canvas.addEventListener("mouseup", () => {
-    mouseIsDown = false;
-    let velocityX = mouseX - clickedX;
-    let velocityY = mouseY - clickedY;
-    let newPlanet = new Planet(Number(massInput.value) * MASS_MULTIPLIER, Number(radiusInput.value), colorInput.value,
-    positionX = clickedX, positionY = clickedY, velocityX = velocityX, velocityY = velocityY);
-    planetList.push(newPlanet);
-});
-
 // Change mouse position variable when mouse is down and is moved
 canvas.addEventListener("mousemove", (e) => {
     if (mouseIsDown) {
