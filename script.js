@@ -173,8 +173,6 @@ window.requestAnimationFrame(step);
 
 // Change mouse position variable when mouse is down and is moved
 canvas.addEventListener("mousemove", (e) => {
-    if (mouseIsDown) {
-        mouseX = e.offsetX;
-        mouseY = e.offsetY;
-    }
+    mouseX = e.offsetX;
+    mouseY = e.offsetY;
 });
