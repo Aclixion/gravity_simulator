@@ -46,8 +46,8 @@ function Planet(mass, radius, positionX=0, positionY=0, velocityX=0, velocityY=0
 
 // Adds a planet to planet list
 function addPlanet(e) {
-    let newPlanet = new Planet(Number(massInput.value) * MASS_MULTIPLIER, Number(radiusInput.value), colorInput.value, 
-    positionX=e.offsetX, positionY=e.offsetY);
+    let newPlanet = new Planet(Number(massInput.value) * MASS_MULTIPLIER, Number(radiusInput.value), positionX=e.offsetX, 
+    positionY=e.offsetY);
 
     planetList.push(newPlanet);
 }
@@ -163,7 +163,7 @@ canvas.addEventListener("click", (e) => {
         mouseIsDown = false;
         let velocityX = mouseX - clickedX;
         let velocityY = mouseY - clickedY;
-        let newPlanet = new Planet(Number(massInput.value) * MASS_MULTIPLIER, Number(radiusInput.value), colorInput.value,
+        let newPlanet = new Planet(Number(massInput.value) * MASS_MULTIPLIER, Number(radiusInput.value),
         positionX = clickedX, positionY = clickedY, velocityX = velocityX, velocityY = velocityY);
         planetList.push(newPlanet);
     }
