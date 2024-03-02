@@ -3,7 +3,6 @@ const ctx = canvas.getContext("2d"); // Context for drawing shape
 
 const massInput = document.querySelector(".mass-input"); // Input for mass
 const radiusInput = document.querySelector(".radius-input"); // Input for radius
-const staysStillInput = document.querySelector(".stays-still-input") // Input for whether or not planet stays still
 
 const G = 6.67e-11; // Gravitational constant (units are m^3/kgs^2)
 
