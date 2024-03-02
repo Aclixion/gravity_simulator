@@ -155,6 +155,15 @@ function step(timestamp) {
 
 // Creates planets
 canvas.addEventListener("click", (e) => {
+    // Alerts user if either mass or radius is not entered
+    if (!massInput.value) {
+        alert("Please enter a value for mass");
+        return;
+    } else if (!radiusInput.value) {
+        alert("Please enter a value for radius");
+        return;
+    }
+
     if (!mouseIsDown) {
         mouseIsDown = true;
         clickedX = e.offsetX;
