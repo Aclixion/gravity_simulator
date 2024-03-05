@@ -108,7 +108,7 @@ function hasCollided(planetOne, planetTwo) {
 function removeCollidedPlanets() {
     // Checks which planets have collided
     for (let i = 0; i < planetList.length; i++) {
-        for (let j = i + 1; j < planetList.length; j++) {
+        for (let j = 0; j < planetList.length; j++) {
             if (hasCollided(planetList[i], planetList[j])) {
                 planetList[i].hasCollided = true;
             }
