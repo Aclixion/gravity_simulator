@@ -163,6 +163,7 @@ function drawFrame() {
 let previousTimestamp = 0;
 function step(timestamp) {
     let delta = timestamp - previousTimestamp;
+    removeCollidedPlanets();
     drawFrame();
     updateVectors(delta);
     previousTimestamp = timestamp;
