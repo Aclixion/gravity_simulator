@@ -116,14 +116,7 @@ function removeCollidedPlanets() {
     }
 
     // Removes collided planets
-    let k = 0;
-    while (k < planetList.length) {
-        if (planetList[k].hasCollided) {
-            planetList.pop(k);
-        } else {
-            k += 1;
-        }
-    }
+    planetList = planetList.filter((planet) => !planet.hasCollided);
 }
 
 // Removes everything from the canvas
