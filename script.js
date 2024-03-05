@@ -104,6 +104,28 @@ function hasCollided(planetOne, planetTwo) {
     return distance <= planetOne.radius + planetTwo.radius;
 }
 
+// Removes planets that have collided
+function removeCollidedPlanets() {
+    // Checks which planets have collided
+    for (let i = 0; i < planetList.length; i++) {
+        for (let j = i + 1; j < planetList.length; j++) {
+            if (hasCollided(planetList[i], planetList[j])) {
+                planetList[i].hasCollided = true;
+            }
+        }
+    }
+
+    // Removes collided planets
+    let k = 0;
+    while (k < planetList.length) {
+        if (planetList[k].hasCollided) {
+            planetList.pop(k);
+        } else {
+            k += 1;
+        }
+    }
+}
+
 // Removes everything from the canvas
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
