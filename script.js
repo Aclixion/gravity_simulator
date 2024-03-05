@@ -100,6 +100,15 @@ function updateVectors(delta) {
     }
 }
 
+// Checks if two planets have collided
+function hasCollided(planetOne, planetTwo) {
+    // Distance between planetOne and planetTwo
+    let distance = Math.sqrt((planetOne.distance.x - planetTwo.distance.x)*(planetOne.distance.x - planetTwo.distance.x) + 
+    (planetOne.distance.y - planetTwo.distance.y) * (planetOne.distance.y - planetTwo.distance.y));
+
+    return distance <= planetOne.radius + planetTwo.radius;
+}
+
 // Removes everything from the canvas
 function clearCanvas() {
     ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
