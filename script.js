@@ -39,7 +39,6 @@ function Planet(mass, radius, positionX=0, positionY=0, velocityX=0, velocityY=0
         x: accelerationX,
         y: accelerationY
     }
-    this.staysStill = staysStillInput.checked;
 };
 
 // Adds a planet to planet list
