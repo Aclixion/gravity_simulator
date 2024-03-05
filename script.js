@@ -98,8 +98,8 @@ function updateVectors(delta) {
 // Checks if two planets have collided
 function hasCollided(planetOne, planetTwo) {
     // Distance between planetOne and planetTwo
-    let distance = Math.sqrt((planetOne.distance.x - planetTwo.distance.x)*(planetOne.distance.x - planetTwo.distance.x) + 
-    (planetOne.distance.y - planetTwo.distance.y) * (planetOne.distance.y - planetTwo.distance.y));
+    let distance = Math.sqrt((planetOne.position.x - planetTwo.position.x)*(planetOne.position.x - planetTwo.position.x) + 
+    (planetOne.position.y - planetTwo.position.y) * (planetOne.position.y - planetTwo.position.y));
 
     return distance <= planetOne.radius + planetTwo.radius;
 }
