@@ -19,7 +19,7 @@ let mouseX;
 let mouseY;
 
 // Whether or not the mouse is down
-let mouseIsDown;
+let releaseMode;
 
 let planetList = []; // Array of all planets on canvas
 
@@ -167,7 +167,7 @@ function drawPlanets() {
 
 // Draw planet template when mouse is down
 function drawPlanetTemplate() {
-    if (mouseIsDown) {
+    if (releaseMode) {
         // Draws the planet that will be released when the mouse is released
         ctx.beginPath();
         ctx.arc(clickedX, clickedY, Number(radiusInput.value), 0, 2 * Math.PI);
@@ -213,12 +213,12 @@ canvas.addEventListener("click", (e) => {
         return;
     }
 
-    if (!mouseIsDown) {
-        mouseIsDown = true;
+    if (!releaseMode) {
+        releaseMode = true;
         clickedX = e.offsetX;
         clickedY = e.offsetY;
     } else {
-        mouseIsDown = false;
+        releaseMode = false;
         let velocityX = mouseX - clickedX;
         let velocityY = mouseY - clickedY;
         let newPlanet = new Planet(Number(massInput.value) * MASS_MULTIPLIER, Number(radiusInput.value),
