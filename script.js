@@ -18,7 +18,7 @@ let clickedY;
 let mouseX;
 let mouseY;
 
-// Whether or not the mouse is down
+// Whether or not a new planet is about to be released
 let releaseMode;
 
 let planetList = []; // Array of all planets on canvas
