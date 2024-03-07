@@ -113,6 +113,21 @@ function removeCollidedPlanets() {
             let totalMass = planetList[i].mass; // Total mass of all planets colliding with i-th planet of planetList (including mass of i-th planet)
             let totalRadius = planetList[i].radius; // Total mass of all planets colliding with i-th planet of planetList (including mass of i-th planet)
             let collisionFound = false; // Whether or not there exists a planet(s) colliding with i-th planet of planetList
+
+            // Checks for collisions
+            for (let j = i+1; j < planetList.length; j++) {
+                if (!planetList[j].hasCollided && hasCollided(planetList[i], planetList[j])) {
+                    collisionFound = true;
+
+                    if (planetList[j].radius >= planetList[largestRadiusIndex].radius) {
+                        largestRadiusIndex = j;
+                    }
+
+                    totalMass += planetList[j].mass;
+                    totalRadius += planetList[j].radius;
+                    planetList[j].hasCollided = true;
+                }
+            }
         }
     }
 
