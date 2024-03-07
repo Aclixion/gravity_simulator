@@ -128,6 +128,12 @@ function removeCollidedPlanets() {
                     planetList[j].hasCollided = true;
                 }
             }
+
+            if (collisionFound) {
+                // Changes mass and radius of the planet with the largest mass colliding with i-th planet of planetList
+                planetList[largestRadiusIndex].mass = totalMass;
+                planetList[largestRadiusIndex].radius = totalRadius;
+            }
         }
     }
 
