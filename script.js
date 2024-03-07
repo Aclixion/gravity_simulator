@@ -165,17 +165,17 @@ function drawPlanets() {
     }
 }
 
-// Draw planet template when mouse is down
+// Draw planet template when releaseMode is true
 function drawPlanetTemplate() {
     if (releaseMode) {
-        // Draws the planet that will be released when the mouse is released
+        // Draws the planet that will be released
         ctx.beginPath();
         ctx.arc(clickedX, clickedY, Number(radiusInput.value), 0, 2 * Math.PI);
         ctx.stroke();
         
         // Draws the velocity vector.
-        //The length of the arrow will indicate how fast the planet will be released.
-        // The direction of the arrow will indicate in which direction the planet will be released.
+        // The length of the vector will indicate how fast the planet will be released.
+        // The direction of the vector will indicate in which direction the planet will be released.
         ctx.beginPath();
         ctx.moveTo(clickedX, clickedY);
         ctx.lineTo(mouseX, mouseY);
