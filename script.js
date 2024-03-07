@@ -133,6 +133,16 @@ function removeCollidedPlanets() {
                 // Changes mass and radius of the planet with the largest mass colliding with i-th planet of planetList
                 planetList[largestRadiusIndex].mass = totalMass;
                 planetList[largestRadiusIndex].radius = totalRadius;
+
+                // Swaps i-th planet with planet at largestRadiusIndex in planetList if a collision is found
+                if (largestRadiusIndex != i) {
+                    planetList[largestRadiusIndex].hasCollided = false;
+                    planetList[i].hasCollided = true;
+
+                    let temp = planetList[i];
+                    planetList[i] = planetList[largestRadiusIndex];
+                    planetList[largestRadiusIndex] = temp;
+                }
             }
         }
     }
